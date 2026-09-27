@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Party Planner — PocketSmart AI{% endblock %}
+{% block content %}
+<div class="planner-layout">
+  <div class="planner-intro"><div class="eyebrow">PARTY & EVENTS</div><h1>Organize the event without losing control of the budget.</h1><p>Get allocations for food, venue, décor, entertainment, photography and contingency.</p></div>
+  <div class="planner-form-card">
+    <form method="post" action="/generate/party" class="form" onsubmit="packParty()">
+      <label>Total budget (₹)<input name="budget" id="budget" type="number" min="1" required placeholder="100000"></label>
+      <label>Event type<input id="event" placeholder="Birthday, wedding, corporate..." required></label>
+      <label>Guest count<input id="guests" type="number" min="1" required placeholder="100"></label>
+      <label>Venue preference<input id="venue" placeholder="Hotel, hall, outdoor, home..."></label>
+      <input type="hidden" name="data" id="data">
+      <button class="btn primary" type="submit">Generate Party Plan ✦</button>
+    </form>
+  </div>
+</div>
+<script>
+function packParty(){ document.getElementById('data').value=JSON.stringify({
+  event: document.getElementById('event').value,
+  guests: document.getElementById('guests').value,
+  venue: document.getElementById('venue').value
+});}
+</script>
+{% endblock %}

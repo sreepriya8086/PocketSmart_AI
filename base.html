@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070b14">
+  <title>{% block title %}PocketSmart AI{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span>◈</span> PocketSmart <em>AI</em></a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/planner/home">Home Planner</a>
+    <a href="/planner/party">Party</a>
+    <a href="/planner/jewelry">Jewelry</a>
+    {% if user %}
+      <a href="/dashboard">Dashboard</a>
+      <a href="/history">History</a>
+      <a class="nav-btn" href="/logout">Logout</a>
+    {% else %}
+      <a href="/login">Login</a>
+      <a class="nav-btn" href="/register">Get Started</a>
+    {% endif %}
+  </nav>
+</header>
+
+<main class="container">
+{% block content %}{% endblock %}
+</main>
+
+<footer>
+  <strong>PocketSmart AI</strong> · Smart planning within your budget
+</footer>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

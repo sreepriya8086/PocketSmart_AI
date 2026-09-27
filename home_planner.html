@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Home Interior Planner — PocketSmart AI{% endblock %}
+{% block content %}
+<div class="planner-layout">
+  <div class="planner-intro"><div class="eyebrow">HOME INTERIOR</div><h1>Build a room plan that respects your budget.</h1><p>Tell PocketSmart AI what you want to improve and it will split the budget into useful categories.</p></div>
+  <div class="planner-form-card">
+    <form method="post" action="/generate/home" class="form" onsubmit="packHome()">
+      <label>Total budget (₹)<input name="budget" id="budget" type="number" min="1" required placeholder="50000"></label>
+      <label>Room type<input id="room" placeholder="Living Room" required></label>
+      <label>Preferred style<input id="style" placeholder="Modern, minimal, classic..."></label>
+      <label>Items needed<textarea id="items" placeholder="Sofa, TV unit, lights, curtains..."></textarea></label>
+      <input type="hidden" name="data" id="data">
+      <button class="btn primary" type="submit">Generate Home Plan ✦</button>
+    </form>
+  </div>
+</div>
+<script>
+function packHome(){ document.getElementById('data').value=JSON.stringify({
+  room: document.getElementById('room').value,
+  style: document.getElementById('style').value,
+  items: document.getElementById('items').value
+});}
+</script>
+{% endblock %}

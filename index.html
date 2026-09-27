@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}PocketSmart AI — Smart Budget Planning{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="eyebrow">AI BUDGET ASSISTANT</div>
+  <h1>Plan smarter.<br><span>Spend with confidence.</span></h1>
+  <p>Generate practical budget plans for interiors, parties and jewelry in seconds.</p>
+  <div class="hero-actions">
+    <a class="btn primary" href="/planner/home">Start Planning</a>
+    <a class="btn secondary" href="/planner/party">Explore Planners</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <div><div class="eyebrow">PLANNERS</div><h2>Choose your plan</h2></div>
+    <p>Enter your budget and preferences. PocketSmart AI allocates your money into useful categories.</p>
+  </div>
+  <div class="planner-grid">
+    <a class="planner-card" href="/planner/home"><div class="icon">🏠</div><h3>Home Interior</h3><p>Furniture, lighting, storage and décor.</p><span>Plan your room →</span></a>
+    <a class="planner-card" href="/planner/party"><div class="icon">🎉</div><h3>Party Planner</h3><p>Food, venue, decoration, entertainment and more.</p><span>Plan your event →</span></a>
+    <a class="planner-card" href="/planner/jewelry"><div class="icon">💎</div><h3>Jewelry Planner</h3><p>Occasion-aware jewelry planning with optional outfit image context.</p><span>Plan your look →</span></a>
+  </div>
+</section>
+
+<section class="feature-strip">
+  <div><b>₹</b><span>Budget-aware allocations</span></div>
+  <div><b>✦</b><span>Gemini AI optional</span></div>
+  <div><b>▣</b><span>Save your plans</span></div>
+  <div><b>✓</b><span>Works without AI key</span></div>
+</section>
+{% endblock %}

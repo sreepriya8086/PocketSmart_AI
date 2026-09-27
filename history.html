@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}History — PocketSmart AI{% endblock %}
+{% block content %}
+<div class="page-head"><div><div class="eyebrow">SAVED PLANS</div><h1>Recommendation history</h1></div></div>
+{% for h in history %}
+<div class="history-card">
+  <div><span class="tag">{{ h["planner"]|title }}</span><small>{{ h["created_at"] }}</small></div>
+  <details><summary>View saved result</summary><pre>{{ h["result_json"] }}</pre></details>
+  <form method="post" action="/history/{{ h['id'] }}/delete" onsubmit="return confirm('Delete this plan?')"><button class="delete-btn">Delete</button></form>
+</div>
+{% else %}
+<div class="empty">No saved recommendations.</div>
+{% endfor %}
+{% endblock %}

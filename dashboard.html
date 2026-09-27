@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — PocketSmart AI{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="eyebrow">DASHBOARD</div><h1>Welcome back</h1><p>{{ user["email"] }}</p></div>
+  <a class="btn primary" href="/planner/home">New Plan</a>
+</div>
+
+<div class="stats">
+  <div><b>{{ plan_count }}</b><span>Plans saved</span></div>
+  <div><b>3</b><span>AI planners</span></div>
+  <div><b>₹</b><span>Budget focused</span></div>
+</div>
+
+<h2>Start a new plan</h2>
+<div class="planner-grid compact">
+  <a class="planner-card" href="/planner/home"><div class="icon">🏠</div><h3>Home</h3><p>Interior budget plan</p></a>
+  <a class="planner-card" href="/planner/party"><div class="icon">🎉</div><h3>Party</h3><p>Event budget plan</p></a>
+  <a class="planner-card" href="/planner/jewelry"><div class="icon">💎</div><h3>Jewelry</h3><p>Look budget plan</p></a>
+</div>
+
+<div class="section-heading recent-head"><h2>Recent plans</h2><a href="/history">View all →</a></div>
+{% for h in history %}
+<div class="history-row"><div><b>{{ h["planner"]|title }}</b><small>{{ h["created_at"] }}</small></div><span>Saved</span></div>
+{% else %}
+<div class="empty">No plans yet. Create your first plan above.</div>
+{% endfor %}
+{% endblock %}

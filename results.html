@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Your Plan — PocketSmart AI{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div><div class="eyebrow">YOUR AI PLAN</div><h1>{{ result.planner|title }} Planner</h1><p>Total budget: <strong>₹{{ "{:,.0f}".format(result.budget) }}</strong></p></div>
+  <button class="btn secondary" onclick="window.print()">Print / Save PDF</button>
+</div>
+
+<div class="summary-card">
+  <div class="summary-icon">✦</div>
+  <div><h2>Plan summary</h2><p>{{ result.summary }}</p>{% if result.ai_note %}<small>{{ result.ai_note }}</small>{% endif %}</div>
+</div>
+
+<div class="recommendation-grid">
+{% for r in result.recommendations %}
+  <article class="recommendation">
+    <div class="rec-top"><span>{{ loop.index }}</span><b>₹{{ "{:,.0f}".format(r.estimated_budget) }}</b></div>
+    <h3>{{ r.category }}</h3>
+    <p>{{ r.suggestion }}</p>
+    {% if r.platforms %}<small>Compare: {{ r.platforms|join(", ") }}</small>{% endif %}
+  </article>
+{% endfor %}
+</div>
+
+{% if result.tips %}
+<div class="tips"><h2>Smart tips</h2><ul>{% for tip in result.tips %}<li>{{ tip }}</li>{% endfor %}</ul></div>
+{% endif %}
+
+<div class="hero-actions"><a class="btn primary" href="/dashboard">Dashboard</a><a class="btn secondary" href="/">New plan</a></div>
+{% endblock %}

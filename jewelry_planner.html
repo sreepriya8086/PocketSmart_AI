@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Jewelry Planner — PocketSmart AI{% endblock %}
+{% block content %}
+<div class="planner-layout">
+  <div class="planner-intro"><div class="eyebrow">JEWELRY</div><h1>Plan your jewelry budget around the occasion and style.</h1><p>Optionally upload an outfit image for visual context when Gemini AI is enabled.</p></div>
+  <div class="planner-form-card">
+    <form method="post" action="/generate/jewelry" enctype="multipart/form-data" class="form" onsubmit="packJewelry()">
+      <label>Total budget (₹)<input name="budget" id="budget" type="number" min="1" required placeholder="25000"></label>
+      <label>Occasion<input id="occasion" placeholder="Wedding, engagement, festival..." required></label>
+      <label>Preferred style<input id="style" placeholder="Classic, traditional, modern..."></label>
+      <label>Outfit image <span class="muted">(optional)</span><input name="image" type="file" accept="image/*"></label>
+      <input type="hidden" name="data" id="data">
+      <button class="btn primary" type="submit">Generate Jewelry Plan ✦</button>
+    </form>
+  </div>
+</div>
+<script>
+function packJewelry(){ document.getElementById('data').value=JSON.stringify({
+  occasion: document.getElementById('occasion').value,
+  style: document.getElementById('style').value
+});}
+</script>
+{% endblock %}
