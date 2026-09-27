@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<h2>Recommendation History</h2>{% for h in history %}<div class="result"><b>{{h['planner']|title}}</b><small>{{h['created_at']}}</small><pre>{{h['result_json']}}</pre></div>{% else %}<p>No history.</p>{% endfor %}{% endblock %}
